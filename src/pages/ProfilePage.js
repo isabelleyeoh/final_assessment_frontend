@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import GetProfile from '../containers/GetProfile';
 import EditProfile from '../containers/EditProfile';
 import Delete from '../containers/Delete';

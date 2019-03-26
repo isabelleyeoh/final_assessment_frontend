@@ -32,7 +32,7 @@ class EditProfile extends React.Component {
 
 		axios({
 			method: 'post',
-			url: `http://localhost:5000/api/v1/users/updateprofile`,
+			url: 'https://letsgo-my.herokuapp.com/api/v1/users/updateprofile',
 			headers: {
 				Authorization: `Bearer ${jwt.auth_token}`
 			},

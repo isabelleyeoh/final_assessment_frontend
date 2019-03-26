@@ -18,7 +18,7 @@ class Delete extends React.Component {
 
 		axios({
 			method: 'post',
-			url: `http://localhost:5000/api/v1/users/delete`,
+			url: 'https://letsgo-my.herokuapp.com/api/v1/users/delete',
 			headers: {
 				Authorization: `Bearer ${jwt.auth_token}`
 			}

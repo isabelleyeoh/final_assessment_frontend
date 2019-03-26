@@ -14,7 +14,7 @@ class GetProfile extends React.Component {
 
 		axios({
 			method: 'get',
-			url: `http://localhost:5000/api/v1/users/getprofile`,
+			url: 'https://letsgo-my.herokuapp.com//api/v1/users/getprofile',
 			headers: {
 				Authorization: `Bearer ${jwt.auth_token}`
 			}
