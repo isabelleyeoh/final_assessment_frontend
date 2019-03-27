@@ -24,6 +24,7 @@ class Delete extends React.Component {
 		})
 			.then(result => {
 				console.log(result)
+				localStorage.removeItem('jwt', JSON.stringify(result.data))
 				this.setState({
 					response: result.data.message,
 				})
