@@ -85,7 +85,7 @@ export default class Venues extends React.Component {
 			params: {
 				client_id: 'L5SR1EXYJILSL5QASZBISWFNB5D0JKIWVWILMWYVKO24FWBA',
 				client_secret: 'QTYAE4RG51LAYVIYEGUGLMRVEPJG3TJYY5WLD1H0I3AY3SHU',
-				v: 20120610,
+				v: '20180323',
 				limit: 10,
 				near: place,
 				query: eating
@@ -139,7 +139,7 @@ export default class Venues extends React.Component {
 							<div className="venue-element-detail">
 
 								<div className="venue-element-name box-sizing">{venue.venue.name}</div>
-
+								<div className="venue-element-name box-sizing">{venue.venue.location.address}, {venue.venue.location.city}, {venue.venue.location.postalCode}, {venue.venue.location.country}</div>
 
 							</div>
 
