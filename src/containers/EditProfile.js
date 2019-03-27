@@ -1,31 +1,31 @@
 import React from 'react';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 class EditProfile extends React.Component {
 	state = {
 		username: "",
 		password: "",
-		success: [],
-		error: [],
+		response: "",
 		hasError: true
 	}
 
-	onChangeUsername = (e) => {
+
+
+	handleChange = (e) => {
+
 		this.setState({
-			username: e.target.value
+			[e.target.name]: e.target.value
 		})
 	}
 
-	onChangePassword = (e) => {
-		this.setState({
-			password: e.target.value
-		})
-	}
 
 
 	updateAccount = (e) => {
+
+		e.preventDefault();
+
 
 		// const jwt = localStorage.getItem('jwt')
 		const jwt = JSON.parse(localStorage.jwt)
@@ -45,17 +45,19 @@ class EditProfile extends React.Component {
 			.then(result => {
 				console.log(result)
 				this.setState({
-					success: result.data.message,
+					response: result.data.message,
 				})
+				window.alert(this.state.response)
 			})
 
 			.catch(error => {
 				// If unsuccessful, we notify users what went wrong
 				console.log('ERROR: ', error)
 				this.setState({
-
+					response: error,
 					hasErrors: true
 				})
+				window.alert(this.state.response)
 			});
 
 	}
@@ -69,12 +71,12 @@ class EditProfile extends React.Component {
 				<Form>
 					<FormGroup>
 						<Label for="exampleUsername">Username</Label>
-						<Input type="username" name="username" id="exampleUsername" placeholder="username" onChange={this.onChangeUsername} />
+						<Input type="username" name="username" id="exampleUsername" placeholder="username" onChange={this.handleChange} />
 					</FormGroup>
 
 					<FormGroup>
 						<Label for="examplePassword">Password</Label>
-						<Input type="password" name="password" id="examplePassword" placeholder="password" onChange={this.onChangePassword} />
+						<Input type="password" name="password" id="examplePassword" placeholder="password" onChange={this.handleChange} />
 					</FormGroup>
 					<Button onClick={this.updateAccount}>Submit</Button>
 				</Form>

@@ -6,8 +6,7 @@ import { Button } from 'reactstrap';
 class Delete extends React.Component {
 	state = {
 		hasError: true,
-		success: [],
-		error: []
+		response: ""
 	}
 
 	deleteAccount = (e) => {
@@ -26,16 +25,18 @@ class Delete extends React.Component {
 			.then(result => {
 				console.log(result)
 				this.setState({
-					success: result.data.message,
+					response: result.data.message,
 				})
-				window.alert("account deleted")
+				window.alert(this.state.response)
 			})
 
 			.catch(error => {
 				console.log('ERROR: ', error)
 				this.setState({
+					response: error,
 					hasErrors: true
 				})
+				window.alert(this.state.response)
 			});
 
 	}

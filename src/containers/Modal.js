@@ -18,15 +18,23 @@ class Modal extends React.Component {
 
     const { showSignup } = this.state
 
+
     return (
 
       <div>
 
-        {showSignup ?
-          <Signup toggle={this.props.toggle} isOpen={this.props.isOpen} signupToggle={this.signupToggle} showSignup={showSignup} /> :
-          <Login toggle={this.props.toggle} isOpen={this.props.isOpen} signupToggle={this.signupToggle} showSignup={showSignup}
-            toggleNotice={this.props.toggleNotice} showMessage={this.props.showMessage}
-          />}
+
+        {
+          showSignup ?
+            <Signup toggle={this.props.toggle
+            } isOpen={this.props.isOpen} signupToggle={this.signupToggle} showSignup={showSignup} /> :
+            <Login toggle={this.props.toggle} isOpen={this.props.isOpen} signupToggle={this.signupToggle} showSignup={showSignup}
+              toggleNotice={this.props.toggleNotice} showMessage={this.props.showMessage}
+            />
+        }
+
+
+
       </div>
     );
   }

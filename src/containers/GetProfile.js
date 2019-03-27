@@ -14,7 +14,7 @@ class GetProfile extends React.Component {
 
 		axios({
 			method: 'get',
-			url: 'https://letsgo-my.herokuapp.com//api/v1/users/getprofile',
+			url: 'https://letsgo-my.herokuapp.com/api/v1/users/getprofile',
 			headers: {
 				Authorization: `Bearer ${jwt.auth_token}`
 			}
@@ -39,13 +39,13 @@ class GetProfile extends React.Component {
 
 	render() {
 
-		const { username } = this.state
+		const jwt = JSON.parse(localStorage.jwt)
 
 		return (
 			<>
 
 				<div>
-					{/* <h4>Hi,{username}. </h4> */}
+					<h4>Hi,{jwt.user.username}. </h4>
 					<h5>You may change your username, email and password here.</h5>
 
 				</div>

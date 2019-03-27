@@ -3,7 +3,6 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Form, La
 import axios from 'axios';
 
 
-
 class Signup extends React.Component {
 
   state = {

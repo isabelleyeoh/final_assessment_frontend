@@ -10,18 +10,15 @@ import '../styles/Venues.css';
 
 export default class Venues extends Component {
 
-	constructor(props) {
 
-		super(props);
+	state = {
+		is_loading: false,
+		form_data: {
+			eating: '',
+			place: ''
+		},
+		venues: []
 
-		this.state = {
-			is_loading: false,
-			form_data: {
-				eating: '',
-				place: ''
-			},
-			venues: []
-		};
 
 	}
 

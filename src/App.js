@@ -13,10 +13,8 @@ import ProfilePage from './pages/ProfilePage';
 class App extends React.Component {
   state = {
     users: [],
-    isLoading: true,
     hasErrors: false,
     showMessage: false,
-    venue: []
   }
 
   componentDidMount = () => {
@@ -49,15 +47,11 @@ class App extends React.Component {
     })
   }
 
-  toggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+
 
 
   render() {
-    const { users, isLoading, toggleNotice, showMessage } = this.state
+    const { toggleNotice, showMessage } = this.state
 
     return (
       <>

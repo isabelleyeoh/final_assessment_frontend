@@ -19,7 +19,7 @@ class Login extends React.Component {
 
     axios({
       method: 'post',
-      url: 'https://letsgo-my.herokuapp.com//api/v1/sessions/login',
+      url: 'https://letsgo-my.herokuapp.com/api/v1/sessions/login',
       data: {
         email: this.state.email,
         password: this.state.password
@@ -32,18 +32,18 @@ class Login extends React.Component {
           response: result.data.message,
           statusLogin: true
         })
-
-        this.props.toggle();
         window.alert(this.state.response)
 
       })
+
       .catch(error => {
         // If unsuccessful, we notify users what went wrong
         console.log('ERROR: ', error)
         this.setState({
+          response: error,
           hasErrors: true
         })
-        window.alert("unsuccessful login")
+        window.alert(this.state.response)
       })
 
   }
@@ -56,23 +56,23 @@ class Login extends React.Component {
   }
 
   handleChange = (e) => {
-
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
 
-
   render() {
 
-    const { toggle, isOpen, signupToggle, showSignup } = this.props;
+    const { toggle, signupToggle, showSignup } = this.props;
     const { statusLogin } = this.state
 
 
     return (
 
-      <Modal isOpen={!showSignup} toggle={toggle}>
+
+
+      <Modal isOpen={!showSignup} toggle={toggle} >
         <ModalHeader toggle={toggle}>Log in</ModalHeader>
         <ModalBody>
           <Form>
@@ -94,7 +94,8 @@ class Login extends React.Component {
         </ModalFooter>
 
 
-      </Modal>
+      </Modal >
+
 
     );
   }

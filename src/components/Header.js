@@ -10,24 +10,19 @@ import '../styles/Header.css';
 
 
 export default class Header extends Component {
+	state = {
+		logo: 'logo.png',
+		form_data: {
+			eating: '',
+			place: ''
+		},
+		is_header_invisible: false,
+		animated_classes: {
+			header: false,
+			content: false,
+			logo: false,
+			form_texts: false
 
-	constructor(props) {
-
-		super(props);
-
-		this.state = {
-			logo: 'logo.png',
-			form_data: {
-				eating: '',
-				place: ''
-			},
-			is_header_invisible: false,
-			animated_classes: {
-				header: false,
-				content: false,
-				logo: false,
-				form_texts: false
-			}
 		}
 
 	}

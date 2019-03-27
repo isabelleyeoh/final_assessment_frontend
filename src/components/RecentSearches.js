@@ -10,16 +10,11 @@ import '../styles/RecentSearches.css';
 
 
 export default class RecentSearches extends Component {
-
-  constructor(props) {
-
-    super(props);
-
-    this.state = {
-      recent_searches: []
-    };
-
+  state = {
+    recent_searches: []
   }
+
+
 
   componentDidMount() {
 
