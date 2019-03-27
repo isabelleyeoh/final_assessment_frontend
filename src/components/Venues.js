@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
+import React from 'react';
+import axios from 'axios';
 
 // Config
 import EventBus from '../config/EventBus.js';
@@ -8,7 +8,7 @@ import EventBus from '../config/EventBus.js';
 import '../styles/index.css';
 import '../styles/Venues.css';
 
-export default class Venues extends Component {
+export default class Venues extends React.Component {
 
 
 	state = {
@@ -41,30 +41,33 @@ export default class Venues extends Component {
 
 	get_first_photo(venue_id, callback) {
 
-		Axios.get('https://api.foursquare.com/v2/venues/' + venue_id + '/photos', {
+		axios({
+			method: 'get',
+			url: 'https://api.foursquare.com/v2/venues/' + venue_id + 'photos',
 			params: {
 				client_id: 'L5SR1EXYJILSL5QASZBISWFNB5D0JKIWVWILMWYVKO24FWBA',
 				client_secret: 'QTYAE4RG51LAYVIYEGUGLMRVEPJG3TJYY5WLD1H0I3AY3SHU',
 				v: '20180323',
 				limit: 1
 			}
-		}).then((response) => {
+		})
+			.then((response) => {
 
-			let result = -1;
+				let result = -1;
 
-			if (response.data.meta.code === 200) {
+				if (response.data.meta.code === 200) {
 
-				if (response.data.response.photos.items[0] !== undefined) {
-					result = response.data.response.photos.items[0];
+					if (response.data.response.photos.items[0] !== undefined) {
+						result = response.data.response.photos.items[0];
+					}
+
 				}
 
-			}
+				callback(result);
 
-			callback(result);
-
-		}).catch((error) => {
-			callback(-1)
-		});
+			}).catch((error) => {
+				callback(-1)
+			});
 
 	}
 
@@ -76,7 +79,9 @@ export default class Venues extends Component {
 
 		this.setState({ is_loading: true });
 
-		Axios.get('https://api.foursquare.com/v2/venues/explore', {
+		axios({
+			method: 'get',
+			url: 'https://api.foursquare.com/v2/venues/explore',
 			params: {
 				client_id: 'L5SR1EXYJILSL5QASZBISWFNB5D0JKIWVWILMWYVKO24FWBA',
 				client_secret: 'QTYAE4RG51LAYVIYEGUGLMRVEPJG3TJYY5WLD1H0I3AY3SHU',
@@ -85,36 +90,37 @@ export default class Venues extends Component {
 				near: place,
 				query: eating
 			}
-		}).then((response) => {
+		})
+			.then((response) => {
 
-			self.setState({ is_loading: false, venues: [] });
+				self.setState({ is_loading: false, venues: [] });
 
-			if (response.data.meta.code === 200) {
+				if (response.data.meta.code === 200) {
 
-				if (response.data.response.groups[0].items !== undefined) {
+					if (response.data.response.groups[0].items !== undefined) {
 
-					let venues = response.data.response.groups[0].items;
+						let venues = response.data.response.groups[0].items;
 
-					self.setState({ venues: venues });
+						self.setState({ venues: venues });
 
-					for (let i = 0; i < venues.length; i++) {
+						for (let i = 0; i < venues.length; i++) {
 
-						let venue = venues[i];
+							let venue = venues[i];
 
-						self.get_first_photo(venue.venue.id, (photo) => {
-							venues[i].venue['photo'] = photo.prefix + '500x500' + photo.suffix;
-							self.setState({ venues: venues });
-						});
+							self.get_first_photo(venue.venue.id, (photo) => {
+								venues[i].venue['photo'] = photo.prefix + '500x500' + photo.suffix;
+								self.setState({ venues: venues });
+							});
+
+						}
 
 					}
 
 				}
 
-			}
-
-		}).catch((error) => {
-			self.setState({ is_loading: false, venues: [] });
-		});
+			}).catch((error) => {
+				self.setState({ is_loading: false, venues: [] });
+			});
 
 	}
 

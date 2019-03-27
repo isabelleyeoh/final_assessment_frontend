@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // Config
 import EventBus from '../config/EventBus.js';
@@ -9,7 +9,7 @@ import '../styles/RecentSearches.css';
 
 
 
-export default class RecentSearches extends Component {
+export default class RecentSearches extends React.Component {
   state = {
     recent_searches: []
   }

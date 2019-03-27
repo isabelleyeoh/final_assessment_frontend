@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ClassNames from 'classnames';
 
 // Config
@@ -9,7 +9,7 @@ import '../styles/index.css';
 import '../styles/Header.css';
 
 
-export default class Header extends Component {
+export default class Header extends React.Component {
 	state = {
 		logo: 'logo.png',
 		form_data: {
