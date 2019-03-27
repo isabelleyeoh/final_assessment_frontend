@@ -17,7 +17,7 @@ class ProfilePage extends React.Component {
             <>
                 <div className='form-page'>
                     <div>
-                        <GetProfile />
+                        <GetProfile users={this.props.users} />
                     </div>
 
                     <div className='form-edit'>

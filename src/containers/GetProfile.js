@@ -5,41 +5,13 @@ import axios from 'axios';
 class GetProfile extends React.Component {
 	state = {
 		hasError: true,
-		username: []
-	}
-
-	getDetails = () => {
-
-		const jwt = localStorage.getItem('jwt')
-
-		axios({
-			method: 'get',
-			url: 'https://letsgo-my.herokuapp.com/api/v1/users/getprofile',
-			headers: {
-				Authorization: `Bearer ${jwt.auth_token}`
-			}
-		})
-
-			.then(result => {
-				console.log(result)
-				this.setState({
-					username: result.data
-				})
-			})
-
-			.catch(error => {
-				// If unsuccessful, we notify users what went wrong
-				console.log('ERROR: ', error)
-				this.setState({
-					hasErrors: true
-				})
-			});
-
+		response: ""
 	}
 
 	render() {
 
 		const jwt = JSON.parse(localStorage.jwt)
+		const users = this.props.users
 
 		return (
 			<>
@@ -47,6 +19,19 @@ class GetProfile extends React.Component {
 				<div>
 					<h4>Hi,{jwt.user.username}. </h4>
 					<h5>You may change your username, email and password here.</h5>
+
+				</div>
+
+				<div>
+					<small>other users: </small>
+					{
+						users.map(user =>
+							<small key={user}>
+								{user.id}=
+								{user.username} </small>
+
+						)
+					}
 
 				</div>
 

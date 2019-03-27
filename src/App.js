@@ -21,7 +21,7 @@ class App extends React.Component {
 
     axios({
       method: 'get',
-      url: `http://localhost:5000/api/v1/users/`,
+      url: `https://letsgo-my.herokuapp.com/api/v1/users/`,
     })
       .then(result => {
         console.log(result)
@@ -51,7 +51,7 @@ class App extends React.Component {
 
 
   render() {
-    const { toggleNotice, showMessage } = this.state
+    const { toggleNotice, showMessage, users } = this.state
 
     return (
       <>
@@ -61,7 +61,7 @@ class App extends React.Component {
 
         <div>
           <Route exact path="/" component={props => <Homepage />} />
-          <Route path='/myprofile' component={props => <ProfilePage />} />
+          <Route path='/myprofile' component={props => <ProfilePage users={users} />} />
 
 
         </div>
