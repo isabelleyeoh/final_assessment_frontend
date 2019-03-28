@@ -43,7 +43,7 @@ export default class Venues extends React.Component {
 
 		axios({
 			method: 'get',
-			url: 'https://api.foursquare.com/v2/venues/' + venue_id + 'photos',
+			url: 'https://api.foursquare.com/v2/venues/' + venue_id + '/photos',
 			params: {
 				client_id: 'L5SR1EXYJILSL5QASZBISWFNB5D0JKIWVWILMWYVKO24FWBA',
 				client_secret: 'QTYAE4RG51LAYVIYEGUGLMRVEPJG3TJYY5WLD1H0I3AY3SHU',
